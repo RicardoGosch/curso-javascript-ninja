@@ -1,0 +1,85 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #000000;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+form {
+    width: 400px;
+    max-width: 90%;
+}
+
+form .number-list {
+    display: flex;
+    flex-wrap: wrap;
+    width: 70%;
+    justify-content: center;
+}
+
+form .input {
+    border: 1px solid gray;
+    padding: 20px 25px;
+    width: 100%;
+    background-color: #D7CF07;
+    color: black;
+    font-weight: bold;
+    font-size: 20px;
+    border: none;
+}
+
+.right-col {
+    width: 30%;
+}
+
+.number-list .number {
+    width: calc(100% / 3);
+    padding: 33px 0;
+    background-color: #502F4C;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.buttons {
+    display: flex;
+}
+
+.button {
+    cursor: pointer;
+    border: none;
+}
+
+.operation-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.operation-list .operation {
+    width: calc(100% /2);
+    padding: 17px 0;
+    font-weight: bold;
+    background-color: #2B59C3;
+    font-size: 22px;
+}
+
+.iqual-item, .clean-item {
+    width: 100%;
+}
+
+.iqual-item .button, .clean-item .button {
+    width: 100%;
+    padding: 26px 0;
+    font-weight: bold;
+    background-color: #2B59C3;
+    font-size: 22px;
+}
