@@ -34,6 +34,8 @@
 
   var $operations = doc.querySelectorAll('[data-js="operation"]');
 
+  var $calculate = doc.querySelector('[data-js="submit"]');
+
   var operators = [];
 
 
@@ -59,6 +61,50 @@
       addOperation(event.target.getAttribute('data-operation'));
     });
   });
+
+  $calculate.addEventListener('click', function(event){
+    event.preventDefault();
+
+    $result.value = calculate($result.value);
+  });
+
+  function calculate(expression){
+    var multiplyReg  = /(\d+)\*(\d+)/g;
+    var sliceReg = /(\d+)\/(\d+)/g;
+    var addReg = /(\d+)\+(\d+)/g;
+    var subtractReg = /(\d+)\-(\d+)/g;
+
+    while(expression.match(multiplyReg)) expression = multiply(expression);
+    while(expression.match(sliceReg)) expression = slice(expression);
+    while(expression.match(addReg)) expression = add(expression);
+    while(expression.match(subtractReg)) expression = subtract(expression);
+
+    function multiply(expression){
+      return expression = expression.replace(multiplyReg, function(reg, num, num2){
+        return Number.parseInt(num) * Number.parseInt(num2);
+      });
+    }
+
+    function slice(expression){
+      return expression = expression.replace(sliceReg, function(reg, num, num2){
+        return Number.parseInt(num) / Number.parseInt(num2);
+      });
+    }
+
+    function add(expression){
+      return expression = expression.replace(addReg, function(reg, num, num2){
+        return Number.parseInt(num) + Number.parseInt(num2);
+      });
+    }
+
+    function subtract(expression){
+      return expression = expression.replace(subtractReg, function(reg, num, num2){
+        return Number.parseInt(num) - Number.parseInt(num2);
+      });
+    }
+
+    return expression;
+  }
 
   function clean(){
     setValue(0);
